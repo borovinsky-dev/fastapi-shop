@@ -1,0 +1,13 @@
+﻿services:
+  api:
+    build: .
+    environment:
+      DATABASE_URL: sqlite+aiosqlite:////app/data/shop.db
+      SECRET_KEY: change-this-before-deploying
+    ports:
+      - "8000:8000"
+    volumes:
+      - shop_data:/app/data
+
+volumes:
+  shop_data:

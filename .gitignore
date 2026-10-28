@@ -1,0 +1,27 @@
+# Python virtual environments and bytecode
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Local environment configuration
+.env
+.env.*
+!.env.example
+
+# Test, lint, and coverage caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# IDE and local tool caches
+.idea/
+.vscode/
+.uv-cache/
+
+# Runtime database files; keep the empty data directory in Git
+data/*
+!data/.gitkeep
