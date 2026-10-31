@@ -13,7 +13,7 @@ class SettingsApp(BaseSettings):
     # SECRET_KEY: str
     # ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     DEBUG: bool = False
-    # для настроек приложения чеез .env
+    # для настроек приложения через .env
     model_config = SettingsConfigDict(
         env_file=dir_settings / ".env",
         env_file_encoding="utf-8",
