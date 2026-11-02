@@ -1,7 +1,7 @@
 from app.models.base import Base
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from decimal import Decimal
-from sqlalchemy import String, Numeric, Integer, Boolean, Text
+from sqlalchemy import String, Numeric, Integer, Boolean, Text, ForeignKey
 
 
 class Product(Base):
@@ -15,3 +15,8 @@ class Product(Base):
         String(10), unique=True, index=True, nullable=False
     )
     is_active: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
+
+    category_id: Mapped[int | None] = mapped_column(
+        ForeignKey("categorys.id"), nullable=True
+    )
+    category: Mapped["Category"] = relationship(back_populates="products")
