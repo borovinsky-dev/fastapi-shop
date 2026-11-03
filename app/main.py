@@ -1,6 +1,7 @@
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Depends
+from fastapi.middleware.cors import CORSMiddleware
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -23,6 +24,13 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="shop-app", lifespan=lifespan)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 app.include_router(api_v1_router, prefix=settings.API_V1_PREFIX)
 
 
