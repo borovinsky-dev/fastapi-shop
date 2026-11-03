@@ -1,8 +1,16 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic import BaseModel
 from pathlib import Path
 
 dir_settings = Path(__file__).resolve().parent.parent.parent
 # print(f"Settings file . env path {dir_settings}")
+
+
+class AuthJWT(BaseModel):
+    private_key_path: Path = dir_settings / "certs" / "private.pem"
+    public_key_path: Path = dir_settings / "certs" / "public.pem"
+    algorithm: str = "RS256"
+    access_token_expire_minutes: int = 15
 
 
 class SettingsApp(BaseSettings):
@@ -18,9 +26,12 @@ class SettingsApp(BaseSettings):
         env_file=dir_settings / ".env",
         env_file_encoding="utf-8",
     )
+    # authJWT
+    authJWT: AuthJWT = AuthJWT()
 
 
 settings = SettingsApp()
+
 
 if __name__ == "__main__":
     print("---SettingsAPP---")

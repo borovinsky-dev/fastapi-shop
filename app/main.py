@@ -6,7 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from sqlalchemy import text
 
-from app.api.v1.endpoints.products import router as products_router
+from app.api.v1 import router as api_v1_router
 from app.core.config import settings
 from app.core.database import db_session
 
@@ -23,7 +23,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="shop-app", lifespan=lifespan)
-app.include_router(products_router, prefix=settings.API_V1_PREFIX)
+app.include_router(api_v1_router, prefix=settings.API_V1_PREFIX)
 
 
 # проверка подключения к БД

@@ -19,4 +19,4 @@ class Product(Base):
     category_id: Mapped[int | None] = mapped_column(
         ForeignKey("categorys.id"), nullable=True
     )
-    category: Mapped["Category"] = relationship(back_populates="products")
+    category: Mapped["Category | None"] = relationship(back_populates="products")

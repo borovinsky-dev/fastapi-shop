@@ -10,6 +10,9 @@ __pycache__/
 .env.*
 !.env.example
 
+# Private authentication keys
+private.pem
+
 # Test, lint, and coverage caches
 .pytest_cache/
 .ruff_cache/
